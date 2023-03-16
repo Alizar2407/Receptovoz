@@ -47,12 +47,6 @@ namespace Receptovoz
 
             AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
             DatabaseManager.SetDBContent(content);
-
-            //DatabaseManager.ClearArticlesTable();
-            DatabaseManager.FillArticlesTable();
-
-            //DatabaseManager.ClearRecipesTable();
-            DatabaseManager.FillRecipesTable();
         }
     }
 }
