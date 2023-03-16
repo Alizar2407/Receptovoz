@@ -44,7 +44,6 @@ details[open] {
 }
 
 #recipes-page__content {
-    box-sizing: border-box;
     width: 70vw;
     padding: 80px;
     padding-top: 30px;
@@ -53,10 +52,9 @@ details[open] {
 }
 
 #recipes-page__search {
-    box-sizing: border-box;
     overflow-y: scroll;
     width: 25vw;
-    height: 90vh;
+    height: 100%;
     padding-top: 30px;
     padding-left: 30px;
     padding-bottom: 30px;
