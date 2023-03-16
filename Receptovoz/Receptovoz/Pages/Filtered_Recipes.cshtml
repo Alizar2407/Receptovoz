@@ -1,0 +1,86 @@
+﻿@page
+@model Receptovoz.Pages.Filtered_RecipesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using Receptovoz.Models;
+
+@{ Layout = "_Layout"; }
+
+@{
+    ViewData["Title"] = "Рецептовоз - рецепты";
+}
+
+<link rel="stylesheet" href="~/css/find_recipe.css" type="text/css" />
+
+<div id="recipes-page">
+    <div id="recipes-page__content">
+        <h1>Найденные рецепты</h1>
+        <p>
+            Ниже вы можете увидеть найденные по вашему запросу
+            блюда. Чтобы перейти на страницу с рецептом, раскройте
+            элемент с нужным названием и нажмите "Перейти к
+            рецепту".
+        </p>
+
+        @{
+            foreach (Recipe recipe in Model.FilteredRecipes)
+            {
+                <details>
+                    <summary>
+                        <div class="recipe-heading">
+                            <h2>@recipe.name</h2>
+                        </div>
+                    </summary>
+
+                    @if (recipe.kiloCalories != 0)
+                    {
+                        <p>Калорийность - @recipe.kiloCalories ккал</p>
+                    }
+                    else
+                    {
+                        <p>Калорийность - не указана</p>
+                    }
+
+                    @if (recipe.cookingTime != null && recipe.cookingTime != string.Empty)
+                    {
+                        <p>Время приготовления - @recipe.cookingTime</p>
+                    }
+                    else
+                    {
+                        <p>Время приготовления - не указано</p>
+                    }
+
+                    <hr />
+
+                    <p style="text-align: center">
+                        <a href="/recipes/@recipe.id/">Перейти к рецепту</a>
+                    </p>
+                </details>
+            }
+        }
+
+        <div>
+            <p>
+                Не нашли то, что искали? Возможно, вы бы хотели
+                <a href="/add_recipe/"
+                   id="share-link">поделиться своим рецептом?</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="recipes-page__search">
+        <form asp-page="filtered_recipes" method="post">
+            <label asp-for="@Model.RecipeName">Название рецепта:</label>
+            <div class="row" style="justify-content: left; margin-bottom: 25px">
+                <input placeholder="Введите название" class="search-field" type="search" asp-for="@Model.RecipeName" />
+                <button class="button-search" type="submit"></button>
+            </div>
+
+            <label asp-for="@Model.SearchTags" title="Разделяйте теги точкой с запятой (;)">Теги поиска:</label>
+            <div class="row" style="justify-content: left">
+                <input placeholder="Введите теги" class="search-field" type="search" asp-for="@Model.SearchTags" />
+                <button class="button-search" type="submit"></button>
+            </div>
+        </form>
+    </div>
+</div>

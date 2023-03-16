@@ -1,0 +1,92 @@
+﻿#add-recipe-content {
+    width: 70vw;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.add-recipe-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+    .add-recipe-row label {
+        width: 250px;
+    }
+
+    .add-recipe-row input {
+        width: calc(100% - 250px);
+    }
+
+#add-recipe-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    padding: 20px;
+}
+
+    #add-recipe-form label {
+        height: 35px;
+        line-height: 35px;
+        margin-right: 20px;
+        font-family: inherit;
+        font-size: 18px;
+    }
+
+    #add-recipe-form input,
+    #add-recipe-form textarea {
+        width: 100%;
+        margin-bottom: 20px;
+        font-family: inherit;
+        font-size: 16px;
+        border-radius: 0.3rem;
+    }
+
+    #add-recipe-form input {
+        height: 35px;
+    }
+
+
+#image-file-dialog {
+    color: white;
+    background: linear-gradient(90deg, black, 0%, #5b5b5b95 100%);
+}
+
+.toast-body {
+    color: #111;
+}
+
+#load-recipe-result {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#recipe-ingredients {
+    height: 200px;
+}
+
+#recipe-instructions {
+    height: 350px;
+}
+
+#recipe-remarks {
+    height: 150px;
+}
+
+#add-recipe-send {
+    width: 100%;
+    margin-top: 15px;
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1.4rem;
+}
+
+    #add-recipe-send:hover {
+        color: #16d9e3;
+    }

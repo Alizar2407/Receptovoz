@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Article>
+
+@{
+    ViewData["Title"] = "Рецептовоз - новости";
+}
+
+<link rel="stylesheet" href="~/css/news.css" type="text/css" />
+
+<div class="content-div">
+    <h1>Последние кулинарные новости</h1>
+
+    @{
+        foreach (Article article in Model)
+        {
+            <section>
+                <h2>@article.title</h2>
+                <p>@article.description</p>
+
+                <img src="~/images/@article.photoUrl" alt="@article.title" />
+            </section>
+        }
+    }
+
+</div>
+

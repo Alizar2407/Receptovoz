@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Recipe>
+
+@{
+    ViewData["Title"] = "Рецептовоз - рецепты";
+}
+
+<link rel="stylesheet" href="~/css/find_recipe.css" type="text/css" />
+
+<div id="recipes-page">
+    <div id="recipes-page__content">
+        <h1>Найденные рецепты</h1>
+        <p>
+            Ниже вы можете увидеть найденные по вашему запросу
+            блюда. Чтобы перейти на страницу с рецептом, раскройте
+            элемент с нужным названием и нажмите "Перейти к
+            рецепту".
+        </p>
+
+        @{
+            foreach (Recipe recipe in Model)
+            {
+                <details>
+                    <summary>
+                        <div class="recipe-heading">
+                            <h2>@recipe.name</h2>
+                        </div>
+                    </summary>
+
+                    @if (recipe.kiloCalories != 0)
+                    {
+                        <p>Калорийность - @recipe.kiloCalories ккал</p>
+                    }
+                    else
+                    {
+                        <p>Калорийность - не указана</p>
+                    }
+
+                    @if (recipe.cookingTime != null && recipe.cookingTime != string.Empty)
+                    {
+                        <p>Время приготовления - @recipe.cookingTime</p>
+                    }
+                    else
+                    {
+                        <p>Время приготовления - не указано</p>
+                    }
+
+                    <hr />
+
+                    <p style="text-align: center">
+                        <a href="/recipes/@recipe.id/">Перейти к рецепту</a>
+                    </p>
+                </details>
+            }
+        }
+
+        <div>
+            <p>
+                Не нашли то, что искали? Возможно, вы бы хотели
+                <a href="/add_recipe/"
+                   id="share-link">поделиться своим рецептом?</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="recipes-page__search">
+        <form action="" method="get">
+            <div class="row" style="justify-content: left">
+                <input placeholder="Введите название"
+                       id="search-field"
+                       type="search" />
+                <button id="button-search" type="submit"></button>
+            </div>
+
+            <p style="margin-top: 50px; font-size: 18px">
+                Тип блюда:
+            </p>
+            <div cass="row">
+                <div>
+                    <input type="checkbox"
+                           id="bakery-checkbox"
+                           name="bakery"
+                           checked />
+                    <label for="bakery-checkbox">Выпечка</label>
+                </div>
+                <div>
+                    <input type="checkbox"
+                           id="salads-checkbox"
+                           name="salads"
+                           checked />
+                    <label for="salads-checkbox">Салаты</label>
+                </div>
+            </div>
+
+            <p style="margin-top: 50px; font-size: 18px">
+                Ингредиенты:
+            </p>
+            <div id="ingredients-div">
+                <a href="">Апельсин</a>
+                <a href="">Батон</a>
+                <a href="">Ваниль</a>
+                <a href="">Горчица</a>
+                <a href="">Дрожжи</a>
+                <a href="">Изюм</a>
+                <a href="">Коньяк</a>
+                <a href="">Курица</a>
+                <a href="">Миндаль</a>
+                <a href="">Молоко</a>
+                <a href="">Мука</a>
+                <a href="">Оливковое масло</a>
+                <a href="">Пармезан</a>
+                <a href="">Перец</a>
+                <a href="">Помидоры</a>
+                <a href="">Растительное масло</a>
+                <a href="">Сахар</a>
+                <a href="">Сливочное масло</a>
+                <a href="">Соль</a>
+                <a href="">Чеснок</a>
+                <a href="">Яйца</a>
+            </div>
+            <script src="~/js/ingredient_selector.js"></script>
+        </form>
+    </div>
+</div>

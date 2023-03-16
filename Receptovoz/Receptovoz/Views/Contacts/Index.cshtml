@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Рецептовоз - контакты";
+}
+
+<link rel="stylesheet" href="~/css/contacts.css" type="text/css" />
+
+<div class="content-div" id="contacts-content">
+    <h1>Написать администрации сайта "Рецептовоз"</h1>
+    <p>
+        На этой странице вы можете оставить администрации сайта свои
+        предложения, просьбы по развитию и улучшению проекта или
+        варианты возможного сотрудничества. Поля, помеченные *,
+        обязательны к заполнению.
+    </p>
+
+    <form id="contacts-form" action="" method="post">
+        <div style="
+                            display: flex;
+                            flex-direction: row;
+                            margin-bottom: 25px;
+                        ">
+            <label for="sender-email">Email*</label>
+            <input id="sender-email" type="email" required />
+        </div>
+
+        <label for="sender-message" style="margin-bottom: 10px">Сообщение*</label>
+        <textarea id="sender-message"
+                  name="message"
+                  required></textarea>
+
+        <button id="contacts-send" type="submit">Отправить</button>
+    </form>
+</div>

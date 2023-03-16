@@ -1,0 +1,76 @@
+﻿@model Recipe
+
+@{
+    Layout = "_Layout";
+}
+
+
+<link rel="stylesheet" href="~/css/recipes.css" type="text/css" />
+
+<article class="content-div">
+    <h1>@Model.name</h1>
+    <p>
+        Дата публикации рецепта:
+        <time>@Model.uploadDate.ToString().Split()[0]</time>
+    </p>
+
+    <div class="slider">
+        @{
+            foreach (string resultPhotoUrl in Model.photoUrls)
+            {
+                <div class="slide"
+                     style="background-image: url('/images/@resultPhotoUrl');"></div>
+            }
+        }
+    </div>
+
+    <p class="paragraph-header">Необходимые ингредиенты</p>
+    <div>
+        <table>
+            <tr>
+                <th>Ингредиент</th>
+                <th>Количество</th>
+            </tr>
+            @{
+                foreach (string ingredient in Model.ingredients)
+                {
+                    string name = ingredient.Split(" - ")[0];
+                    string value = ingredient.Split(" - ")[1];
+
+                    <tr>
+                        <td>@name</td>
+                        <td>@value</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <p class="paragraph-header">Инструкция по приготовлению</p>
+    <div class="row">
+        <div class="recipe">
+            <ol>
+                @{
+                    foreach (string instruction in Model.instructions)
+                    {
+                        <li>@instruction</li>
+                    }
+                }
+            </ol>
+        </div>
+    </div>
+
+    <p class="paragraph-header">Примечания</p>
+    <div>
+        <ul>
+            @{
+                foreach (string note in Model.notes)
+                {
+                    <li>@note</li>
+                }
+            }
+        </ul>
+    </div>
+</article>
+
+<script src="~/js/result_image_slider.js"></script>

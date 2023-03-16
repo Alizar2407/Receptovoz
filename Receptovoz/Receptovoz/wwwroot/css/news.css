@@ -1,0 +1,23 @@
+﻿section {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 1rem;
+}
+
+    section p {
+        width: 70%;
+    }
+
+    section img {
+        width: 70%;
+    }
+
+h1 {
+    text-align: center;
+}
